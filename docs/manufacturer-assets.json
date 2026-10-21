@@ -1,0 +1,12 @@
+{
+  "reference": "https://rus-pc.ru/",
+  "note": "Карточки из предоставленного пользователем референса. Скачаны без изменений 2026-10-21; не обозначают партнёрский статус Лигус.",
+  "assets": {
+    "dist/assets/manufacturers/aquarius.webp": "https://static.tildacdn.com/tild3236-3234-4731-b961-626534313030/01_aquarius_web.webp",
+    "dist/assets/manufacturers/graviton.webp": "https://static.tildacdn.com/tild3861-6631-4333-b161-616262613836/02_graviton_web.webp",
+    "dist/assets/manufacturers/rikor.webp": "https://static.tildacdn.com/tild3265-3334-4132-a663-653639393637/03_rikor_web.webp",
+    "dist/assets/manufacturers/icl-techno.webp": "https://static.tildacdn.com/tild6336-3963-4536-a634-613237373239/04_icl_techno_web.webp",
+    "dist/assets/manufacturers/positron.webp": "https://static.tildacdn.com/tild6534-3736-4036-a234-656365366332/05_positron_web.webp",
+    "dist/assets/manufacturers/katusha.webp": "https://static.tildacdn.com/tild6664-3839-4430-b531-633366643533/06_katyusha_web.webp"
+  }
+}

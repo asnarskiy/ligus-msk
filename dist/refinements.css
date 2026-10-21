@@ -199,3 +199,44 @@ html.menu-open{overflow:hidden;scrollbar-gutter:stable}
  .steps p{font-size:15px}
 }
 @media(prefers-reduced-motion:reduce){.site-header *,.mobile-menu{transition:none!important;animation:none!important}}
+
+/* Client logos within the home page's audience section. */
+.clients{margin-top:64px;padding-top:40px;border-top:1px solid var(--line);scroll-margin-top:100px}
+.clients h3{margin:0 0 32px;font-size:28px;line-height:1.3;font-weight:500;letter-spacing:-.03em}
+.client-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;padding:0;margin:0;list-style:none}
+.client-card{display:flex;flex-direction:column;align-items:center;min-width:0;padding:24px 20px 18px;border:1px solid var(--line);background:#fff;text-align:center}
+.client-logo{display:flex;align-items:center;justify-content:center;width:100%;height:88px;margin-bottom:18px}
+.client-logo img{width:100%;height:100%;object-fit:contain}
+.client-card>span{max-width:230px;font-size:12px;line-height:1.5;color:var(--muted)}
+@media(max-width:1100px){.client-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:900px){.client-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.clients{margin-top:48px;padding-top:32px}}
+@media(max-width:650px){
+ .clients{margin-top:36px;padding-top:28px}
+ .clients h3{font-size:25px;margin-bottom:24px}
+ .client-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .client-card{padding:20px 12px 16px}
+ .client-logo{height:68px;margin-bottom:14px}
+ .client-card>span{font-size:11px}
+}
+
+/* Manufacturer links within the home page's Russian equipment section. */
+.manufacturers{padding-block:44px 88px;border-top:1px solid var(--line);scroll-margin-top:100px}
+.manufacturers h2{max-width:920px;font-size:38px;line-height:1.2}
+.manufacturers>p{margin:20px 0 36px;font-size:16px;line-height:1.8;color:var(--muted)}
+.manufacturer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:0;margin:0;list-style:none}
+.manufacturer-card{position:relative;display:block;border-radius:4px;background:#08111c;color:#fff}
+.manufacturer-card img{width:100%;height:auto;aspect-ratio:4/3;border-radius:inherit}
+.manufacturer-arrow{position:absolute;right:20px;top:20px;display:grid;place-items:center;width:38px;height:38px;border:1px solid #ffffff60;background:#08111c55;transition:background .18s,transform .18s}
+.manufacturer-card:hover .manufacturer-arrow,.manufacturer-card:focus-visible .manufacturer-arrow{background:var(--blue);transform:translate(2px,-2px)}
+@media(max-width:900px){
+ .manufacturers{padding-block:36px 60px}
+ .manufacturers h2{font-size:33px}
+ .manufacturer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+}
+@media(max-width:650px){
+ .manufacturers{padding-block:30px 48px}
+ .manufacturers h2{font-size:30px}
+ .manufacturers>p{font-size:15px;margin:18px 0 26px}
+ .manufacturer-grid{grid-template-columns:minmax(0,1fr)}
+ .manufacturer-arrow{right:16px;top:16px}
+}

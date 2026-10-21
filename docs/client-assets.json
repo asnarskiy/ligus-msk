@@ -1,0 +1,170 @@
+{
+  "retrieved": "2026-10-21",
+  "note": "Список клиентов предоставлен владельцем сайта. Повторы ФЦ БАС и Велесстроя объединены; Ильина И.В. исключена по указанию владельца. Логотипы сохранены локально, без внешней загрузки в браузере посетителя.",
+  "assets": [
+    {
+      "file": "dist/assets/clients/zhilishchnik.png",
+      "organization": "ГБУ «Жилищник района Отрадное»",
+      "inn": [
+        "7715488558"
+      ],
+      "website": "https://gbuotradnoe.mos.ru/",
+      "source": "https://gbuotradnoe.mos.ru/upload_all/iblock/4e0/4e0d0e4ea306ce671780bbfca30b6152/Otradnoe.png",
+      "note": "Эмблема района, используемая в шапке официального сайта организации."
+    },
+    {
+      "file": "dist/assets/clients/nami.png",
+      "organization": "ФГУП «НАМИ»",
+      "inn": [
+        "7711000924"
+      ],
+      "website": "https://nami.ru/",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d5/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9D%D0%90%D0%9C%D0%98.png",
+      "note": "Копия на Wikimedia Commons; исходник НАМИ: https://nami.ru/uploads/files/logo_new_444.png"
+    },
+    {
+      "file": "dist/assets/clients/sber2b.svg",
+      "organization": "ООО «Сбер2В»",
+      "inn": [
+        "7730241227"
+      ],
+      "website": "https://sber2b.ru/",
+      "source": "https://sber2b.ru/uploads/Sber_2_B_logo_1_ab820e3588.svg"
+    },
+    {
+      "file": "dist/assets/clients/talalikhin.jpg",
+      "organization": "ГАПОУ МОК им. В. Талалихина",
+      "inn": [
+        "7723920242"
+      ],
+      "website": "https://mok.mskobr.ru/",
+      "source": "https://cdn4.telesco.pe/file/qlVado5hcSz5X6aPGJCRgaY0_8gpwaM3jjFVLgfU95toZNb53pokyrDMmlBlmwIvPPYjryVuC3M50bLAShNi26EtiGwCLsmjVO0VJJC5lyWaT68CeM0AifXB4X9LHFvMglmws1kYH2eTH2S7WjoE9nr1W-UmlDLhBSza-eiZDyKgTn7uFoe6K8BsuQMx1E8rg-9HTUYFIjVd4QcTWs-WiuAinx0YmhNGY2pYD34qv_Z4m9eqKhwqwwH7XxM2Zaj3sgsSbyParx2r1TDIy_JL6eJJqRIck7AsoVEfE7Jg_xzoxY5pvEQMGodip4sIzNRUW7wT3BEjjdaHNPeNHhPKvw.jpg",
+      "note": "Логотип из профиля Telegram https://t.me/moktalalihina"
+    },
+    {
+      "file": "dist/assets/clients/mdto.png",
+      "organization": "АНО «МДТО»",
+      "inn": [
+        "9710077999"
+      ],
+      "website": "https://www.mdto.ru/",
+      "source": "https://www.mdto.ru/storage/assets/imgs/logo-d.png"
+    },
+    {
+      "file": "dist/assets/clients/sberuniversity.gif",
+      "organization": "АНО ДПО «Корпоративный университет Сбербанка»",
+      "inn": [
+        "7736128605"
+      ],
+      "website": "https://sberuniversity.ru/",
+      "source": "https://www.ph4.ru/DL/LOGO/s/sberuniversity__.gif",
+      "note": "Чёрная версия логотипа СберУниверситета из каталога https://www.ph4.ru/logo_logo.php?d=sberuniversity"
+    },
+    {
+      "file": "dist/assets/clients/dti.png",
+      "organization": "АО «ДТИ Москвы»",
+      "inn": [
+        "9724090767"
+      ],
+      "website": "https://tpmgm.ru/",
+      "source": "https://tpmgm.ru/wp-content/themes/provodnik/images/mosgormash_logo.png",
+      "note": "В файле с прежним именем mosgormash_logo.png размещён актуальный знак Дирекции технологической инфраструктуры Москвы."
+    },
+    {
+      "file": "dist/assets/clients/mosproekt3.png",
+      "organization": "АО «Моспроект-3»",
+      "inn": [
+        "7707820890"
+      ],
+      "website": "https://mosproekt3.ru/",
+      "source": "https://mosproekt3.ru/wp-content/uploads/2021/08/logo-dark-ru.png"
+    },
+    {
+      "file": "dist/assets/clients/aprel.gif",
+      "organization": "ООО «Семейная Аптека «Апрель»»",
+      "inn": [
+        "2309137766"
+      ],
+      "website": "https://apteka-april.ru/",
+      "source": "https://www.ph4.ru/DL/LOGO/a/apteka_april.gif",
+      "note": "Логотип аптечной сети из https://www.ph4.ru/logo_logo.php?d=apteka_april"
+    },
+    {
+      "file": "dist/assets/clients/fcbas.svg",
+      "organization": "АНО «ФЦ БАС»",
+      "inn": [
+        "7720893343"
+      ],
+      "website": "https://xn--80ab3cjk.xn--p1ai/",
+      "source": "https://xn--80ab3cjk.xn--p1ai/_nuxt/logo.D1AdMMtJ.svg"
+    },
+    {
+      "file": "dist/assets/clients/urst.jpg",
+      "organization": "АО «УРСТ»",
+      "inn": [
+        "7703800010"
+      ],
+      "website": "https://www.ao-urst.ru/",
+      "source": "https://www.ao-urst.ru/gallery/a0f62f703006a04af3730b9d4e5a78c8cd4e2507-ts1644301907.jpeg?ts=1787657781"
+    },
+    {
+      "file": "dist/assets/clients/velesstroy.jpg",
+      "organization": "ООО «Велесстрой»",
+      "inn": [
+        "7709787790"
+      ],
+      "website": "https://www.velesstroy.com/",
+      "source": "https://www.velesstroy.com/local/templates/stroy/images/logo_new.jpg"
+    },
+    {
+      "file": "dist/assets/clients/alfa.svg",
+      "organization": "АО «АльфаСтрахование»",
+      "inn": [
+        "7713056834"
+      ],
+      "website": "https://www.alfastrah.ru/",
+      "source": "https://logo-teka.com/wp-content/uploads/2025/07/alfastrahovanie-logo-rus.svg",
+      "note": "Русская версия из https://logo-teka.com/alfastrahovanie/"
+    },
+    {
+      "file": "dist/assets/clients/mashuk.svg",
+      "organization": "АНО «ЦЗ «Машук»»",
+      "inn": [
+        "9701261021"
+      ],
+      "website": "https://xn--80aaniggioebb6azax6a7b.xn--p1ai/",
+      "source": "https://xn--80aaniggioebb6azax6a7b.xn--p1ai/local/front/dist/shared/icons/logo-color.svg"
+    },
+    {
+      "file": "dist/assets/clients/edgecenter.svg",
+      "organization": "ООО «Эджцентр» и ООО «Эджклауд»",
+      "inn": [
+        "7704848336",
+        "9731087701"
+      ],
+      "website": "https://edgecenter.ru/",
+      "source": "https://static.edgestatic.ru/edgeconfstatic/assets/logo/edge_logo-1724073584.svg",
+      "note": "Общая карточка EdgeCenter. Официальный URL логотипа указан в https://edgecenter.ru/knowledge-base/streaming-platform/manage-edgeconf-via-api . Белые буквы заменены на #242424 для светлого фона; геометрия и цвет знака сохранены."
+    },
+    {
+      "file": "dist/assets/clients/bizone.svg",
+      "organization": "ООО «Бизон» (BI.ZONE)",
+      "inn": [
+        "9701036178"
+      ],
+      "website": "https://bi.zone/",
+      "source": "https://bi.zone/",
+      "note": "Извлечён inline SVG из шапки официального сайта. Добавлен чёрный fill, который в оригинале наследуется от CSS шапки."
+    },
+    {
+      "file": "dist/assets/clients/mipi.svg",
+      "organization": "ООО «Институт «Мосинжпроект»»",
+      "inn": [
+        "9701021862"
+      ],
+      "website": "https://mipi.ru/",
+      "source": "https://mipi.ru/local/templates/mosinzh/images/Logo.svg",
+      "note": "Белые буквы заменены на #242424 для светлого фона; геометрия и красный знак сохранены."
+    }
+  ]
+}
