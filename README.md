@@ -7,7 +7,8 @@
 - Телефон: +7 977 977 22 31
 - Email: tender@ligus-msk.ru
 - Основной сайт: https://ligus-msk.ru/ (REG.RU, HTTPS и SMTP работают)
-- GitHub Pages: https://aleshaio.github.io/ligus-msk/
+- GitHub Pages: https://asnarskiy.github.io/ligus-msk/
+- Репозиторий: https://github.com/asnarskiy/ligus-msk (основная ветка `main`)
 
 ## Сайт
 
@@ -61,7 +62,7 @@ GitHub Actions публикует сайт на GitHub Pages при каждом
 Пример отдельной сборки для адреса проекта:
 
 ```sh
-OUTPUT_DIR=_site BASE_PATH=/ligus-msk SITE_URL=https://aleshaio.github.io/ligus-msk python3 build.py
+OUTPUT_DIR=_site BASE_PATH=/ligus-msk SITE_URL=https://asnarskiy.github.io/ligus-msk python3 build.py
 OUTPUT_DIR=_site BASE_PATH=/ligus-msk python3 verify.py
 ```
 

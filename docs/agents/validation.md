@@ -32,8 +32,8 @@ git status --short
 ### Сборка с префиксом
 
 ```sh
-OUTPUT_DIR=release/qa-pages BASE_PATH=/ligus-msk SITE_URL=https://aleshaio.github.io/ligus-msk INDEXING_ENABLED=0 METRICA_ID='' python3 build.py
-OUTPUT_DIR=release/qa-pages BASE_PATH=/ligus-msk SITE_URL=https://aleshaio.github.io/ligus-msk INDEXING_ENABLED=0 METRICA_ID='' python3 verify.py
+OUTPUT_DIR=release/qa-pages BASE_PATH=/ligus-msk SITE_URL=https://asnarskiy.github.io/ligus-msk INDEXING_ENABLED=0 METRICA_ID='' python3 build.py
+OUTPUT_DIR=release/qa-pages BASE_PATH=/ligus-msk SITE_URL=https://asnarskiy.github.io/ligus-msk INDEXING_ENABLED=0 METRICA_ID='' python3 verify.py
 ```
 
 Используйте новый каталог вывода или очищайте только собственный каталог тестового результата. При изменении маршрутов убедитесь, что удалённые страницы не остались в копируемой `dist/`.
