@@ -6,21 +6,31 @@ from collections import Counter
 import json, os
 import xml.etree.ElementTree as ET
 from seo import SearchConfig, PAGES
+from legal import consent_document
 
 PROJECT = Path(__file__).parent
 ROOT = Path(os.environ.get('OUTPUT_DIR', str(PROJECT / 'dist'))).resolve()
 BASE_PATH = os.environ.get('BASE_PATH', '').rstrip('/')
 SITE = json.loads((PROJECT / 'site.json').read_text())
 SEARCH = SearchConfig(SITE, os.environ.get('SITE_URL', SITE['domain']).rstrip('/'))
+CONSENT = consent_document(SITE)
+FORM_PROVIDER = os.environ.get('FORM_PROVIDER', SITE.get('formProvider', 'redirect'))
+FORM_ENABLED = os.environ.get('CONTACT_FORM_ENABLED', '1' if SITE.get('contactFormEnabled') else '0') == '1'
 
 class Page(HTMLParser):
     def __init__(self, path):
         super().__init__()
         self.links=[]; self.ids=set(); self.h1=0; self.title=''; self.in_title=False
         self.meta={}; self.canonical=''; self.in_json=False; self.json_text=''; self.schemas=[]
+        self.forms=[]; self.active_form=None
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if tag=='form':
+            self.active_form={'attrs':a,'inputs':[],'links':[]}; self.forms.append(self.active_form)
+        if self.active_form is not None:
+            if tag=='input':self.active_form['inputs'].append(a)
+            if tag=='a':self.active_form['links'].append(a.get('href',''))
         if 'id' in a:self.ids.add(a['id'])
         if tag=='h1':self.h1+=1
         if tag=='title':self.in_title=True
@@ -30,6 +40,7 @@ class Page(HTMLParser):
         if tag in ['a','link','script','img']:
             if a.get('href',a.get('src')):self.links.append(a.get('href',a.get('src')))
     def handle_endtag(self, tag):
+        if tag=='form':self.active_form=None
         if tag=='title':self.in_title=False
         if tag=='script' and self.in_json:
             self.schemas.append(json.loads(self.json_text));self.in_json=False
@@ -48,6 +59,15 @@ for path,page in pages.items():
     if page.meta.get('metrica-id','')!=SEARCH.counter:errors.append(f'Counter: {slug}')
     if not page.schemas or not any(n.get('@type')=='WebPage' for n in page.schemas[0].get('@graph',[])):errors.append(f'JSON-LD: {slug}')
     if page.meta.get('robots','').startswith('index,'):indexed.append(page.canonical)
+    expects_form = FORM_PROVIDER == 'smtp' and FORM_ENABLED and slug in ('', 'request')
+    if len(page.forms) != int(expects_form):errors.append(f'Unexpected form availability: {slug}')
+    for form in page.forms:
+        attrs, inputs = form['attrs'], form['inputs']
+        if attrs.get('action') != '/api/contact.php' or attrs.get('data-provider') != 'smtp':errors.append(f'Unsafe form destination: {slug}')
+        consent = [a for a in inputs if a.get('name') == 'consent']
+        version = [a.get('value') for a in inputs if a.get('name') == 'consent_version']
+        if len(consent) != 1 or consent[0].get('type') != 'checkbox' or 'checked' in consent[0] or 'required' not in consent[0]:errors.append(f'Consent must be a separate required unchecked choice: {slug}')
+        if version != [CONSENT['version']] or BASE_PATH+'/consent/' not in form['links']:errors.append(f'Missing current consent document: {slug}')
     for link in page.links:
         u=urlsplit(link)
         if u.scheme or u.netloc:continue
@@ -68,6 +88,11 @@ if SEARCH.enabled and len(indexed)!=len(PAGES):errors.append('Missing indexable 
 robots=(ROOT/'robots.txt').read_text()
 if '\nDisallow: /\n' in robots:errors.append('Crawler cannot read page noindex directives')
 if SEARCH.enabled and 'Sitemap: '+SEARCH.origin+'/sitemap.xml' not in robots:errors.append('Missing sitemap directive')
+consent_file = ROOT/'consent'/f'{CONSENT["version"]}.txt'
+if not consent_file.is_file() or consent_file.read_bytes() != CONSENT['text'].encode('utf-8'):
+    errors.append('Downloadable consent differs from the server consent snapshot')
+for slug in ('privacy','consent','buyers','contacts'):
+    if ROOT/slug/'index.html' not in pages:errors.append(f'Missing legal page: {slug}')
 report={'pages':len(pages),'indexable':len(indexed),'analytics_enabled':bool(SEARCH.counter),'local_links':count,'errors':errors}
 print(json.dumps(report,ensure_ascii=False,indent=2))
 assert not errors

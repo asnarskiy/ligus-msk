@@ -14,6 +14,7 @@ import socket
 import socketserver
 import sqlite3
 import subprocess
+import sys
 import tempfile
 import threading
 import time
@@ -23,9 +24,12 @@ import urllib.request
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from legal import consent_document
+CONSENT = consent_document(json.loads((ROOT / 'site.json').read_text(encoding='utf-8')))
 PHP = os.environ.get('PHP_BIN') or shutil.which('php') or '/opt/homebrew/opt/php@8.4/bin/php'
 SECRET = 'test-secret-never-use-in-production-0123456789'
-VALID = dict(name='Тестовый заказчик', phone='+7 977 000 00 00', email='client@example.test', organization='Тестовая организация', comment='Нужны российские ноутбуки', consent='on', _honey='')
+VALID = dict(name='Тестовый заказчик', phone='+7 977 000 00 00', email='client@example.test', organization='Тестовая организация', comment='Нужны российские ноутбуки', consent='on', consent_version=CONSENT['version'], _honey='')
 PDF = b'%PDF-1.4\n1 0 obj\n<< /Type /Catalog >>\nendobj\n%%EOF\n'
 
 @contextmanager
@@ -75,6 +79,7 @@ class Harness:
         self.private = self.root / 'private' / 'contact'
         shutil.copytree(ROOT / 'server' / 'private' / 'contact', self.private,
                         ignore=shutil.ignore_patterns('config.php', 'runtime'))
+        (self.private / 'consent.json').write_text(json.dumps(dict(CONSENT, form_enabled=True), ensure_ascii=False), encoding='utf-8')
         shutil.copytree(public_source or ROOT / 'server' / 'public', self.root / 'public_html')
         self.smtp = SMTPServer(('127.0.0.1', 0), Sink)
         self.smtp.messages = []
@@ -148,6 +153,7 @@ class ContactTests(unittest.TestCase):
     def setUp(self):
         self.h.smtp.messages.clear(); self.h.smtp.fail = False
         self.h.config['enabled'] = True; self.h.config['environment'] = 'test'; self.h.write_config()
+        (self.h.private / 'consent.json').write_text(json.dumps(dict(CONSENT, form_enabled=True), ensure_ascii=False), encoding='utf-8')
         db = self.h.private / 'runtime' / 'state.sqlite'
         if db.exists():
             with connection(db) as conn:
@@ -164,6 +170,29 @@ class ContactTests(unittest.TestCase):
         self.assertIn(VALID['name'], message.get_content())
         self.assertIn(VALID['comment'], message.get_content())
         self.assertIn('Согласие: отмечено', message.get_content())
+        self.assertIn(CONSENT['version'], message.get_content())
+        self.assertIn(CONSENT['sha256'], message.get_content())
+        self.assertIn(CONSENT['text'].strip(), message.get_content().replace('\r\n', '\n'))
+
+    def test_consent_version_is_required(self):
+        for version in ['', 'request-2026-09-16']:
+            self.assertEqual(self.h.submit(fields={'consent_version': version})[0], 422)
+        self.assertEqual(self.h.smtp.messages, [])
+
+    def test_form_disabled_until_release_is_enabled(self):
+        (self.h.private / 'consent.json').write_text(json.dumps(dict(CONSENT, form_enabled=False)), encoding='utf-8')
+        code, body, _ = self.h.http()
+        self.assertEqual(code, 503)
+        self.assertEqual(body['code'], 'form_disabled')
+        self.assertEqual(self.h.http('POST', fields=dict(VALID, token='unused'))[0], 503)
+        self.assertEqual(self.h.smtp.messages, [])
+
+    def test_consent_snapshot_must_be_intact(self):
+        (self.h.private / 'consent.json').write_text(json.dumps(dict(CONSENT, text='changed', form_enabled=True)), encoding='utf-8')
+        self.assertEqual(self.h.http()[0], 503)
+        (self.h.private / 'consent.json').unlink()
+        self.assertEqual(self.h.http()[0], 503)
+        self.assertEqual(self.h.smtp.messages, [])
 
     def test_attachment_and_cleanup(self):
         code, body, _ = self.h.submit(attachment=('Задание.pdf', PDF))

@@ -2,9 +2,9 @@ name: Test SMTP handler
 
 on:
   push:
-    paths: ['server/**', 'scripts/build_hosting.py', 'build.py', 'seo.py', 'marketing/**', 'dist/app.js', 'dist/analytics.js', '.github/workflows/contact.yml']
+    paths: ['server/**', 'scripts/build_hosting.py', 'build.py', 'legal.py', 'site.json', 'seo.py', 'marketing/**', 'dist/app.js', 'dist/analytics.js', '.github/workflows/contact.yml']
   pull_request:
-    paths: ['server/**', 'scripts/build_hosting.py', 'build.py', 'seo.py', 'marketing/**', 'dist/app.js', 'dist/analytics.js', '.github/workflows/contact.yml']
+    paths: ['server/**', 'scripts/build_hosting.py', 'build.py', 'legal.py', 'site.json', 'seo.py', 'marketing/**', 'dist/app.js', 'dist/analytics.js', '.github/workflows/contact.yml']
   workflow_dispatch:
 
 permissions:

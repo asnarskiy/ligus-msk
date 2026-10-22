@@ -139,10 +139,6 @@ document.querySelectorAll('.request-form').forEach(form => {
     submitButton.disabled = true;
     submitButton.textContent = 'Отправляем…';
     emitEvent('form_submit_started',{form:form.closest('.contact-section') ? 'home' : 'request'});
-    if (form.dataset.provider !== 'smtp') {
-      HTMLFormElement.prototype.submit.call(form);
-      return;
-    }
     sending = true;
     form.setAttribute('aria-busy', 'true');
     try {

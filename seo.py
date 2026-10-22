@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).parent
 PAGES = json.loads((ROOT / 'marketing' / 'seo-pages.json').read_text())
-EXCLUDED = {'404', 'thanks', 'privacy', 'request', 'projects', 'documents'}
+EXCLUDED = {'404', 'thanks', 'privacy', 'consent', 'buyers', 'request', 'projects', 'documents'}
 
 
 class SearchConfig:

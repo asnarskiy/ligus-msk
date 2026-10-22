@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {readFile, mkdir, writeFile} from 'node:fs/promises';
-import {resolve, dirname, extname} from 'node:path';
+import {resolve, dirname, extname, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createServer} from 'node:http';
 import {execFileSync} from 'node:child_process';
@@ -12,15 +12,15 @@ const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const root=resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const qa=resolve(root,'release/marketing-qa');
 await mkdir(qa,{recursive:true});
-const modes={preview:{},enabled:{INDEXING_ENABLED:'1',METRICA_ID:'123456'}};
+const modes={preview:{},enabled:{INDEXING_ENABLED:'1',METRICA_ID:'123456'},disabled:{CONTACT_FORM_ENABLED:'0'},static:{FORM_PROVIDER:'redirect'}};
 const servers=[];
 for (const [mode, flags] of Object.entries(modes)) {
- const env={...process.env,INDEXING_ENABLED:'0',METRICA_ID:'',SITE_URL:'https://ligus-msk.ru',BASE_PATH:'',FORM_PROVIDER:'smtp',OUTPUT_DIR:resolve(qa,mode),...flags};
- execFileSync('python3',['build.py'],{cwd:root,env});
- execFileSync('python3',['verify.py'],{cwd:root,env});
+ const env={...process.env,INDEXING_ENABLED:'0',METRICA_ID:'',SITE_URL:'https://ligus-msk.ru',BASE_PATH:'',FORM_PROVIDER:'smtp',CONTACT_FORM_ENABLED:'1',OUTPUT_DIR:resolve(qa,mode),...flags};
+ execFileSync(process.env.PYTHON_BIN || 'python3',['build.py'],{cwd:root,env});
+ execFileSync(process.env.PYTHON_BIN || 'python3',['verify.py'],{cwd:root,env});
  const server=createServer(async(req,res)=>{
   const url=new URL(req.url,'http://localhost');let path=resolve(qa,mode,'.'+decodeURIComponent(url.pathname));
-  if(!path.startsWith(resolve(qa,mode)+'/')&&path!==resolve(qa,mode)){res.writeHead(403).end();return;}
+  if(!path.startsWith(resolve(qa,mode)+sep)&&path!==resolve(qa,mode)){res.writeHead(403).end();return;}
   if(url.pathname.endsWith('/'))path+='/index.html';
   try {const data=await readFile(path);res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'application/javascript','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp','.png':'image/png'})[extname(path)]||'application/octet-stream');res.end(data);}catch{res.writeHead(404).end();}
  });
@@ -45,6 +45,20 @@ async function context(mode, viewport={width:390,height:844}, slow=false){
  return {ctx,page,hits,url:modes[mode].url};
 }
 try{
+ // Published disabled forms and static mirrors must not accept contact details.
+ for(const mode of ['disabled','static']){
+  const t=await context(mode);
+  for(const path of ['/','/request/']){
+   await t.page.goto(t.url+path);await t.page.waitForLoadState('networkidle');
+   assert.equal(await t.page.locator('form,input,textarea').count(),0);
+   assert.equal(await t.page.locator('.request-transfer').count(),1);
+   assert.equal(t.hits.length,0);
+   if(mode==='static')assert.equal(await t.page.locator('.request-transfer .button').getAttribute('href'),'https://ligus-msk.ru/request/');
+   if(path==='/request/')await t.page.screenshot({path:resolve(qa,`request-${mode}-390.png`),fullPage:true});
+   checks++;
+  }
+  await t.ctx.close();
+ }
  // Default builds must have no counter, banner or external SDK request.
  let t=await context('preview');
  await t.page.goto(t.url+'/');await t.page.waitForLoadState('networkidle');
@@ -76,6 +90,13 @@ try{
  await t.page.locator('[name=phone]').fill('+7 977 000 00 00');
  await t.page.locator('[name=email]').fill('private@example.test');
  await t.page.locator('[name=attachment]').setInputFiles({name:'private-specification.txt',mimeType:'text/plain',buffer:Buffer.from('Local test only')});
+ // Consent is a distinct unchecked choice; nothing is sent without it.
+ assert.equal(await t.page.locator('[name=consent]').isChecked(),false);
+ await t.page.locator('.request-form button[type=submit]').click();
+ assert.equal(submissions,0);
+ assert.equal(await t.page.locator('.consent a').getAttribute('href'),'/consent/');
+ assert.match(await t.page.locator('[name=consent_version]').inputValue(),/^request-2026-10-22-[a-f0-9]{12}$/);
+ checks++;
  await t.page.locator('[name=consent]').check();
  await t.page.locator('.request-form button[type=submit]').click();
  await t.page.waitForFunction(()=>window.metricCalls?.some(a=>a[2]==='form_submit_error'));
@@ -106,12 +127,12 @@ try{
  // Inspect responsive geometry and save real renders of the changed content.
  for(const width of [390,781,1440]){
   t=await context('preview',{width,height:900});
-  for(const path of ['/','/production/laptops/','/services/']){
+  for(const path of ['/','/production/laptops/','/services/','/request/','/privacy/','/consent/','/buyers/','/contacts/']){
    await t.page.goto(t.url+path);await t.page.evaluate(()=>document.fonts.ready);
    const dimensions=await t.page.evaluate(()=>({w:innerWidth,body:document.documentElement.scrollWidth}));
    assert.ok(dimensions.body<=dimensions.w+1,JSON.stringify({path,width,...dimensions}));
    assert.equal(await t.page.locator('h1').count(),1);
-   if(path.includes('laptops'))await t.page.screenshot({path:resolve(qa,`laptops-${width}.png`),fullPage:true});
+   if(['/request/','/consent/','/buyers/'].includes(path))await t.page.screenshot({path:resolve(qa,`${path.split('/')[1]}-${width}.png`),fullPage:true});
    checks++;
   }
   await t.ctx.close();

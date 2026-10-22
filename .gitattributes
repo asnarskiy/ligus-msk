@@ -1,0 +1,2 @@
+# The downloadable consent must retain the exact bytes hashed for the server.
+dist/consent/*.txt text eol=lf

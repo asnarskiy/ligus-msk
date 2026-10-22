@@ -8,7 +8,20 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 const MAX_BODY = 12 * 1024 * 1024;
 const TOKEN_TTL = 3600;
-const CONSENT_VERSION = 'request-2026-09-16';
+
+function consentDocument(): array {
+    $path = __DIR__ . '/consent.json';
+    if (!is_file($path)) throw new RuntimeException('Consent document required');
+    $document = json_decode(file_get_contents($path), true, 16, JSON_THROW_ON_ERROR);
+    if (!is_array($document) || !is_string($document['text'] ?? null)
+        || !is_string($document['version'] ?? null) || !is_string($document['sha256'] ?? null)
+        || !preg_match('/^request-\d{4}-\d{2}-\d{2}-[a-f0-9]{12}$/D', $document['version'])
+        || !hash_equals(hash('sha256', $document['text']), $document['sha256'])
+        || !str_ends_with($document['version'], substr($document['sha256'], 0, 12))) {
+        throw new RuntimeException('Invalid consent document');
+    }
+    return $document;
+}
 
 function respond(int $status, string $message, array $extra = []): never {
     http_response_code($status);
@@ -164,6 +177,10 @@ function run(): void {
     if (!in_array($method, ['GET', 'POST'], true)) { header('Allow: GET, POST'); respond(405, 'Метод не поддерживается.'); }
     if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > MAX_BODY) respond(413, 'Размер запроса превышает лимит. Прикрепите файл до 10 МБ.');
     $c = configuration();
+    $consent = consentDocument();
+    if (($consent['form_enabled'] ?? false) !== true) {
+        respond(503, 'Онлайн-форма временно недоступна. Контакты компании доступны на сайте.', ['code' => 'form_disabled']);
+    }
     $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
     if ($origin === '' && isset($_SERVER['HTTP_REFERER'])) {
         $u = parse_url($_SERVER['HTTP_REFERER']);
@@ -200,6 +217,9 @@ function run(): void {
     if (strlen($digits) < 10 || strlen($digits) > 15) respond(422, 'Укажите телефон: от 10 до 15 цифр.', ['field' => 'phone']);
     if ($email !== '' && (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email))) respond(422, 'Проверьте адрес электронной почты.', ['field' => 'email']);
     if (field('consent', 8, true) !== 'on') respond(422, 'Подтвердите согласие на обработку данных.', ['field' => 'consent']);
+    if (!hash_equals($consent['version'], field('consent_version', 80, true))) {
+        respond(422, 'Текст согласия обновился. Сохраните введённые сведения, обновите страницу и ознакомьтесь с актуальным согласием.', ['field' => 'consent', 'code' => 'consent_changed']);
+    }
     $file = attachment($c);
     $q = $db->prepare("INSERT OR IGNORE INTO requests VALUES (?, ?, 'sending')"); $q->execute([$id, time()]);
     if (!$q->rowCount()) respond(409, 'Заявка уже обрабатывается.');
@@ -227,7 +247,9 @@ function run(): void {
         if ($email !== '') $mail->addReplyTo($email);
         $mail->Subject = 'Лигус — заявка ' . substr($id, 0, 8);
         $mail->MessageID = '<' . $id . '@' . parse_url($c['site_origin'], PHP_URL_HOST) . '>';
-        $mail->Body = "Новая заявка с сайта «Лигус»\n\nИмя: $name\nТелефон: $phone\nОрганизация: $organization\nEmail: $email\n\nЗадача:\n$comment\n\nID: $id\nВремя UTC: " . gmdate('c') . "\nСогласие: отмечено в форме\nВерсия текста: " . CONSENT_VERSION;
+        $mail->Body = "Новая заявка с сайта «Лигус»\n\nИмя: $name\nТелефон: $phone\nОрганизация: $organization\nEmail: $email\n\nЗадача:\n$comment\n\nID: $id\nВремя UTC: " . gmdate('c')
+            . "\nСогласие: отмечено отдельным флажком в форме\nВерсия текста: " . $consent['version']
+            . "\nSHA-256: " . $consent['sha256'] . "\n\nПодтверждённый текст согласия:\n" . $consent['text'];
         if ($file) {
             $temp = $c['runtime_dir'] . '/upload-' . bin2hex(random_bytes(16));
             if (!move_uploaded_file($file['tmp'], $temp)) throw new RuntimeException('Upload move failed');

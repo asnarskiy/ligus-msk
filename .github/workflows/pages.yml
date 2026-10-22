@@ -27,6 +27,9 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.13'
+      - name: Require confirmed company details before publishing
+        run: |
+          python3 -c "import json; s=json.load(open('site.json')); assert s.get('legalDetailsConfirmed'), 'Confirm company details and processing terms in site.json before publishing; see docs/personal-data.md'"
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
