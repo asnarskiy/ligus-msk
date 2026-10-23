@@ -1,2 +1,5 @@
 # The downloadable consent must retain the exact bytes hashed for the server.
 dist/consent/*.txt text eol=lf
+
+# Logo manifest hashes must also stay stable across Windows and Pages builds.
+dist/assets/manufacturers/logos/*.svg text eol=lf

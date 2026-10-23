@@ -401,7 +401,9 @@
       "owner": "SmartMate",
       "sourceType": "manufacturer",
       "path": "dist/assets/manufacturers/logos/brand-b6d857e645.svg",
-      "sha256": "45f07cb615273ab86f858976972afdfe939f173631a156ae4c3c8e2aee3e8322"
+      "sha256": "315a65e92b1032d673d7a11008b2fad15150c4ed287d09e59c6eee22482b5691",
+      "sourceSha256": "45f07cb615273ab86f858976972afdfe939f173631a156ae4c3c8e2aee3e8322",
+      "adaptation": "Нормализованы переносы строк и пробелы в конце строк; изображение не изменено."
     },
     "Билтех": {
       "page": "https://bilteh.ru/",
@@ -409,7 +411,9 @@
       "owner": "Билтех",
       "sourceType": "manufacturer",
       "path": "dist/assets/manufacturers/logos/brand-e69bae35d6.svg",
-      "sha256": "567aec6f6919e31cc37b41525e470dced48143fc27a765b4af7b4c1f95cc0a63"
+      "sha256": "a2d7c408ee7f435c0bfb4af0819e15e8aa5545a977a6e3dd4989ddaad944f4a8",
+      "sourceSha256": "567aec6f6919e31cc37b41525e470dced48143fc27a765b4af7b4c1f95cc0a63",
+      "adaptation": "Нормализованы переносы строк и пробелы в конце строк; изображение не изменено."
     },
     "МОНИТОРУС": {
       "page": "https://monitoros.ru/",
@@ -425,7 +429,9 @@
       "owner": "Дисофт",
       "sourceType": "manufacturer",
       "path": "dist/assets/manufacturers/logos/brand-4e48d15688.svg",
-      "sha256": "5df491d21b248cd9b957fb655a2d0b561e587186d8443687346abc3c91111ef0"
+      "sha256": "e2abab57bb254534273db022a9f3aecad724fdc9a04ec496e6f09effece2be37",
+      "sourceSha256": "5df491d21b248cd9b957fb655a2d0b561e587186d8443687346abc3c91111ef0",
+      "adaptation": "Нормализованы переносы строк и пробелы в конце строк; изображение не изменено."
     },
     "Geckotouch": {
       "page": "https://geckotouch.ru/",
@@ -466,7 +472,9 @@
       "owner": "NettleBox",
       "sourceType": "manufacturer",
       "path": "dist/assets/manufacturers/logos/brand-827400bdf9.svg",
-      "sha256": "44e834d78776dc1f5cecc3b2f9ea976a0d21c449dfd7da2bab0660cd8e7152c3"
+      "sha256": "02a51f821eac5f7933a86af9ea8248a9958dc044f89e8590e235c55248fd4200",
+      "sourceSha256": "44e834d78776dc1f5cecc3b2f9ea976a0d21c449dfd7da2bab0660cd8e7152c3",
+      "adaptation": "Нормализованы переносы строк и пробелы в конце строк; изображение не изменено."
     },
     "АБР": {
       "page": "https://www.abrtechnology.ru/",
@@ -474,7 +482,9 @@
       "owner": "АБР Технолоджи",
       "sourceType": "manufacturer",
       "path": "dist/assets/manufacturers/logos/brand-a81574b49b.svg",
-      "sha256": "6702eeeba9d6c77ac87f64c38338a55eb24cf4130951f310ecd7c483c05b83f1"
+      "sha256": "49d0835a9680a88307e0c6dd839b989c9e4088d65914698879ffae86eb0aee66",
+      "sourceSha256": "6702eeeba9d6c77ac87f64c38338a55eb24cf4130951f310ecd7c483c05b83f1",
+      "adaptation": "Нормализованы переносы строк и пробелы в конце строк; изображение не изменено."
     }
   }
 }
