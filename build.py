@@ -208,23 +208,30 @@ def client_logos():
     return f'''<div class="clients" id="clients" aria-labelledby="clients-title"><h3 id="clients-title">С нами работают</h3><ul class="client-grid">{cards}</ul></div>'''
 
 def manufacturer_links():
-    manufacturers = [
-        ('aquarius', 'Aquarius', 'https://aq.ru/', 'Российский производитель компьютерной техники'),
-        ('graviton', 'Гравитон', 'https://graviton.ru/', 'Российский производитель ПК и серверов'),
-        ('rikor', 'РИКОР', 'https://rikor.com/', 'Российский производитель вычислительной техники'),
-        ('icl-techno', 'ICL Техно', 'https://icl-techno.ru/', 'Российский производитель ИТ-оборудования'),
-        ('positron', 'POSITRON', 'https://positron.ru/', 'Российский производитель ноутбуков и ИТ-оборудования'),
-        ('katusha', 'Катюша', 'https://katusha-it.ru/', 'Российские принтеры, МФУ и решения для печати'),
-    ]
-    links = ''.join(
-        f'<li><a class="manufacturer-card" href="{url}" target="_blank" rel="noopener noreferrer" '
-        f'aria-label="{name} — сайт производителя (откроется в новой вкладке)">'
-        f'<img src="/assets/manufacturers/{slug}.webp" alt="{name} — {description}" '
-        f'width="1200" height="900" loading="lazy" decoding="async">'
-        f'<span class="manufacturer-arrow" aria-hidden="true">{icon("up",22)}</span></a></li>'
-        for slug, name, url, description in manufacturers
-    )
-    return f'''<div class="wrap manufacturers" id="manufacturers"><h2 id="manufacturers-title">Российские производители ПК и компьютерной техники</h2><p>ПК, ноутбуки, серверы и печатная техника — подробнее на сайтах производителей.</p><ul class="manufacturer-grid" aria-labelledby="manufacturers-title">{links}</ul></div>'''
+    catalog = json.loads((ROOT / 'manufacturers.json').read_text(encoding='utf-8'))
+    categories, profiles = catalog['categories'], catalog['profiles']
+    names = list(dict.fromkeys([name for name, profile in profiles.items() if profile.get('image')]
+                              + [name for category in categories for name in category['brands']]))
+    cards = []
+    for name in names:
+        profile = profiles.get(name, {})
+        matches = [category for category in categories if name in category['brands']]
+        tags = ' '.join(category['id'] for category in matches)
+        types = ' · '.join(category['shortLabel'] for category in matches)
+        detail = f'<span class="manufacturer-detail">{html.escape(profile["detail"])}</span>' if profile.get('detail') else ''
+        if profile.get('image'):
+            visual = f'<img src="/assets/manufacturers/{profile["image"]}.webp" alt="{html.escape(name)}" width="1200" height="900" loading="lazy" decoding="async">'
+        else:
+            visual = f'<span class="manufacturer-name">{html.escape(name)}</span>'
+        content = f'<div class="manufacturer-visual">{visual}</div><div class="manufacturer-caption">{detail}<span class="manufacturer-types">{html.escape(types)}</span></div>'
+        if profile.get('url'):
+            card = f'<a class="manufacturer-card" href="{html.escape(profile["url"])}" target="_blank" rel="noopener noreferrer" aria-label="{html.escape(name)} — сайт производителя (откроется в новой вкладке)">{content}<span class="manufacturer-arrow" aria-hidden="true">{icon("up",16)}</span></a>'
+        else:
+            card = f'<div class="manufacturer-card">{content}</div>'
+        cards.append(f'<li data-manufacturer-categories="{tags}">{card}</li>')
+    filters = '<button type="button" data-manufacturer-filter="all" aria-pressed="true" aria-controls="manufacturer-grid">Все</button>'
+    filters += ''.join(f'<button type="button" data-manufacturer-filter="{category["id"]}" aria-pressed="false" aria-controls="manufacturer-grid">{html.escape(category["label"])}</button>' for category in categories)
+    return f'''<div class="wrap manufacturers" id="manufacturers"><h2 id="manufacturers-title">Российские производители ПК и компьютерной техники</h2><p>От ноутбуков и рабочих станций до интерактивных панелей и печатной техники. Подберём модель и проверим её актуальную запись в реестре под вашу закупку.</p><div class="manufacturer-filters" role="group" aria-label="Категория техники" hidden>{filters}</div><p class="manufacturer-status" role="status" aria-live="polite" hidden></p><ul class="manufacturer-grid" id="manufacturer-grid" aria-labelledby="manufacturers-title">{''.join(cards)}</ul><button class="manufacturer-more button outline" type="button" aria-controls="manufacturer-grid" hidden>Показать все бренды</button></div>'''
 
 REGISTRY=f'''<section class="registry-section"><div class="wrap registry-grid"><div><span class="eyebrow">РОССИЙСКАЯ ТЕХНИКА</span><h2>Нужна техника<br>из реестра<br><span>Минпромторга?</span></h2><p>Подберём оборудование с учётом требований вашей закупки и проверим реестровые записи для конкретных моделей.</p><a class="button white" href="/russian-equipment/">Как мы подбираем {icon('up',21)}</a></div><div class="registry-process"><span class="eyebrow">ОТ ТРЕБОВАНИЙ К КОНКРЕТНОЙ МОДЕЛИ</span><div><span>01</span><h3>Формируем требования</h3><p>Помогаем определить характеристики, количество и состав техники ещё до подготовки ТЗ.</p></div><div><span>02</span><h3>Проверяем по реестру</h3><p>Модель, исполнение и актуальную запись в ГИСП.</p></div><div><span>03</span><h3>Собираем спецификацию</h3><p>Оборудование, комплектность и подтверждающие сведения.</p></div><a href="https://gisp.gov.ru/pp719v2/pub/prod/" target="_blank" rel="noopener" class="registry-source">Реестр промышленной продукции в ГИСП {icon('up',16)}</a></div></div>{manufacturer_links()}</section>'''
 

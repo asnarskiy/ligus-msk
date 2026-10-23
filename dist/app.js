@@ -1,4 +1,44 @@
 const siteBase = document.querySelector('meta[name="site-base"]')?.content || '';
+
+// Without JavaScript every brand remains visible; filtering never makes network requests.
+const manufacturerDirectory = document.querySelector('#manufacturers');
+if (manufacturerDirectory) {
+  const filters = manufacturerDirectory.querySelector('.manufacturer-filters');
+  const buttons = [...filters.querySelectorAll('[data-manufacturer-filter]')];
+  const cards = [...manufacturerDirectory.querySelectorAll('[data-manufacturer-categories]')];
+  const status = manufacturerDirectory.querySelector('.manufacturer-status');
+  const more = manufacturerDirectory.querySelector('.manufacturer-more');
+  const pageSize = 15;
+  let selected = 'all';
+  let expanded = false;
+  const renderManufacturers = () => {
+    const matching = cards.filter(card => selected === 'all' || card.dataset.manufacturerCategories.split(' ').includes(selected));
+    const visible = new Set(expanded ? matching : matching.slice(0, pageSize));
+    cards.forEach(card => { card.hidden = !visible.has(card); });
+    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.manufacturerFilter === selected)));
+    status.textContent = `Бренды: ${visible.size} из ${matching.length}`;
+    more.hidden = matching.length <= pageSize;
+    more.textContent = expanded ? 'Свернуть список' : `Показать все (${matching.length})`;
+    more.setAttribute('aria-expanded', String(expanded));
+  };
+  buttons.forEach(button => button.addEventListener('click', () => {
+    selected = button.dataset.manufacturerFilter;
+    expanded = false;
+    renderManufacturers();
+  }));
+  more.addEventListener('click', () => {
+    expanded = !expanded;
+    renderManufacturers();
+    if (!expanded) {
+      filters.scrollIntoView({block: 'start', behavior: 'instant'});
+      buttons.find(button => button.dataset.manufacturerFilter === selected).focus({preventScroll: true});
+    }
+  });
+  renderManufacturers();
+  filters.hidden = false;
+  status.hidden = false;
+}
+
 const header = document.querySelector('.site-header');
 const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
 window.addEventListener('scroll', updateHeader, {passive: true});

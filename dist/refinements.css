@@ -219,24 +219,42 @@ html.menu-open{overflow:hidden;scrollbar-gutter:stable}
  .client-card>span{font-size:11px}
 }
 
-/* Manufacturer links within the home page's Russian equipment section. */
+/* Compact manufacturer directory, progressively enhanced with category filters. */
 .manufacturers{padding-block:44px 88px;border-top:1px solid var(--line);scroll-margin-top:100px}
 .manufacturers h2{max-width:920px;font-size:38px;line-height:1.2}
-.manufacturers>p{margin:20px 0 36px;font-size:16px;line-height:1.8;color:var(--muted)}
-.manufacturer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:0;margin:0;list-style:none}
-.manufacturer-card{position:relative;display:block;border-radius:4px;background:#08111c;color:#fff}
-.manufacturer-card img{width:100%;height:auto;aspect-ratio:4/3;border-radius:inherit}
-.manufacturer-arrow{position:absolute;right:20px;top:20px;display:grid;place-items:center;width:38px;height:38px;border:1px solid #ffffff60;background:#08111c55;transition:background .18s,transform .18s}
+.manufacturers>p{max-width:900px;margin:20px 0 28px;font-size:16px;line-height:1.8;color:var(--muted)}
+.manufacturer-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;scroll-margin-top:90px}
+.manufacturer-filters button{min-height:42px;padding:9px 14px;border:1px solid var(--line);border-radius:3px;background:#fff;color:var(--blue);font:inherit;font-size:13px;line-height:1.4;cursor:pointer}
+.manufacturer-filters button:hover{border-color:var(--blue)}
+.manufacturer-filters button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.manufacturers>.manufacturer-status{margin:0 0 16px;font-size:12px;line-height:1.5;color:var(--muted)}
+.manufacturer-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:0;margin:0;list-style:none}
+.manufacturer-grid>li{min-width:0}
+.manufacturer-card{position:relative;display:flex;flex-direction:column;height:100%;overflow:hidden;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--blue);text-decoration:none}
+.manufacturer-visual{display:flex;align-items:center;justify-content:center;aspect-ratio:2/1;background:var(--off,#f3f3f0);min-width:0}
+.manufacturer-card img{display:block;width:100%;height:100%;aspect-ratio:2/1;object-fit:cover}
+.manufacturer-name{padding:16px 12px;text-align:center;font-size:20px;line-height:1.2;letter-spacing:-.02em;overflow-wrap:anywhere}
+.manufacturer-caption{padding:12px;line-height:1.5}
+.manufacturer-detail{display:block;margin-bottom:4px;font-size:11px;color:var(--blue)}
+.manufacturer-types{display:block;font-size:11px;color:var(--muted)}
+.manufacturer-arrow{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:26px;height:26px;color:#fff;border:1px solid #ffffff60;background:#08111c55;transition:background .18s,transform .18s}
 .manufacturer-card:hover .manufacturer-arrow,.manufacturer-card:focus-visible .manufacturer-arrow{background:var(--blue);transform:translate(2px,-2px)}
+.manufacturer-more{margin-top:24px;cursor:pointer;font:inherit;font-size:14px}
+.manufacturers [hidden]{display:none!important}
+.manufacturer-filters button:focus-visible,.manufacturer-more:focus-visible,.manufacturer-card:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 @media(max-width:900px){
  .manufacturers{padding-block:36px 60px}
  .manufacturers h2{font-size:33px}
- .manufacturer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ .manufacturer-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 }
 @media(max-width:650px){
  .manufacturers{padding-block:30px 48px}
  .manufacturers h2{font-size:30px}
  .manufacturers>p{font-size:15px;margin:18px 0 26px}
- .manufacturer-grid{grid-template-columns:minmax(0,1fr)}
- .manufacturer-arrow{right:16px;top:16px}
+ .manufacturer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .manufacturer-filters{gap:6px}
+ .manufacturer-filters button{padding:8px 10px;font-size:12px}
+ .manufacturer-name{font-size:18px;padding:14px 10px}
+ .manufacturer-caption{padding:10px}
+ .manufacturer-arrow{right:8px;top:8px;width:24px;height:24px}
 }

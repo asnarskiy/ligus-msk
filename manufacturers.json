@@ -1,0 +1,80 @@
+{
+  "categories": [
+    {
+      "id": "laptops",
+      "label": "Ноутбуки",
+      "shortLabel": "Ноутбуки",
+      "brands": ["Aquarius", "Rikor", "ICL", "KVADRA", "Kraftway", "Гравитон", "SberDevices", "AR Pro", "Элпи", "LigaSmart", "Inferit", "F+", "Бештау", "Айрон", "BITBLAZE", "POSITRON"]
+    },
+    {
+      "id": "desktops",
+      "label": "Системные блоки и ПК",
+      "shortLabel": "ПК",
+      "brands": ["RDW", "Aquarius", "Бештау", "AMUR", "ICL", "Гравитон", "DEPO", "Лось", "REALINTECHPRO", "QX", "Rikor", "Kraftway", "DDL", "KVADRA", "Гигант", "ARBYTE", "Inferit", "UNIVERSAL", "Технобизнес", "АБР", "Элпи", "KCG", "Marina Richi", "LightCom", "ARAMIL / ФЭМ", "STOREX", "BHT", "НЬЮКЛИК", "RAMEC", "Эльбрус", "КИТ", "Альви", "VECOM", "СЭВТ", "ZEON", "Сила", "Ferrum", "ProInterTech", "TECHNO-PC", "IZEC", "Арсенал+", "Техноконсул", "МИГ", "Норси", "Limark", "КИНТЕХ", "Оредеж", "Беллатрикс", "JeminiCo", "ИНЭУМ им. Брука", "SberDevices", "ATECHLINE"]
+    },
+    {
+      "id": "all-in-one",
+      "label": "Моноблоки",
+      "shortLabel": "Моноблоки",
+      "brands": ["RDW", "Бештау", "QX", "ICL", "Aquarius", "UNIVERSAL", "LightCom", "AMUR", "DEPO", "REALINTECHPRO", "KVADRA", "Ancomp", "АБР", "Гравитон", "ARAMIL / ФЭМ", "KCG", "Rikor", "Билтех", "Inferit", "RAMEC", "Гигант", "Marina Richi", "ICT", "LigaSmart", "ARBYTE", "VECOM", "ProInterTech", "Арсенал+", "МИГ", "BHT", "Технопроминжиниринг", "НЬЮКЛИК", "IZEC", "Интертач", "Limark", "ИНЭУМ им. Брука", "Технобизнес", "СЭВТ", "Техноконсул", "ATECHLINE", "F+"]
+    },
+    {
+      "id": "interactive",
+      "label": "Интерактивные панели",
+      "shortLabel": "Интерактивные панели",
+      "brands": ["LigaSmart", "Lumien / NexTouch", "UTS Smart", "Интертач", "Geckotouch", "SMARTMATE", "Stark", "IZEC", "EXELLTECH", "Union", "TeachTouch", "JeminiCo", "LUMIOBOARD", "Marina Richi", "Гравитон", "AZETOUCH", "AVKompleks «Оникс»", "Антошка", "Interwrite", "Динскай", "ITU Display", "Инфо", "PROPTIMAX"]
+    },
+    {
+      "id": "displays",
+      "label": "Мониторы и дисплеи",
+      "shortLabel": "Мониторы и дисплеи",
+      "brands": ["RDW", "МОНИТОРУС", "LigaSmart", "LightCom", "ИКАР", "FRONT", "Бештау", "Сова", "ДИСОФТ", "Элитборд", "Lumien / NexTouch", "VALDAY", "Kraftway", "АБР", "AMUR", "Билтех", "ICL", "Aquarius", "Орикс", "Гравитон", "Rikor", "ARBYTE", "Geckotouch", "REALINTECHPRO", "KCG", "Marina Richi", "DEPO", "Элпи", "F+", "IRBIS", "NettleBox"]
+    },
+    {
+      "id": "peripherals",
+      "label": "Клавиатуры и мыши",
+      "shortLabel": "Клавиатуры и мыши",
+      "brands": ["RDW", "ICL", "Гравитон", "LightCom", "Kraftway", "Бештау", "НЬЮКЛИК"]
+    },
+    {
+      "id": "printing",
+      "label": "МФУ и принтеры",
+      "shortLabel": "МФУ и принтеры",
+      "brands": ["Катюша"]
+    },
+    {
+      "id": "scanners",
+      "label": "Сканеры",
+      "shortLabel": "Сканеры",
+      "brands": ["ЭЛАР Скамакс"]
+    },
+    {
+      "id": "tablets",
+      "label": "Планшеты",
+      "shortLabel": "Планшеты",
+      "brands": ["Aquarius", "KVADRA", "OKO", "ICL"]
+    }
+  ],
+  "profiles": {
+    "Aquarius": {"image": "aquarius", "url": "https://aq.ru/"},
+    "Гравитон": {"image": "graviton", "url": "https://graviton.ru/"},
+    "Rikor": {"image": "rikor", "url": "https://rikor.com/"},
+    "ICL": {"image": "icl-techno", "url": "https://icl-techno.ru/", "detail": "RayBook · ViewRay · RayPad"},
+    "POSITRON": {"image": "positron", "url": "https://positron.ru/", "detail": "Проксима"},
+    "Катюша": {"image": "katusha", "url": "https://katusha-it.ru/"},
+    "SberDevices": {"detail": "SDNB · SDPC"},
+    "JeminiCo": {"detail": "Jemini"},
+    "Интертач": {"detail": "INTERTOUCH"},
+    "QX": {"detail": "Броктехнолоджи"},
+    "UNIVERSAL": {"detail": "КМ Инженерные системы"},
+    "KCG": {"detail": "Картас"},
+    "ICT": {"detail": "ИКТ Маркет"},
+    "Билтех": {"detail": "Промышленная техника"},
+    "ИКАР": {"detail": "Профессиональные панели"},
+    "FRONT": {"detail": "Промышленные дисплеи"},
+    "ДИСОФТ": {"detail": "Светодиодные экраны"},
+    "Элитборд": {"detail": "Видеостены"},
+    "Антошка": {"detail": "Детские панели"},
+    "OKO": {"detail": "Байтэрг"}
+  }
+}
