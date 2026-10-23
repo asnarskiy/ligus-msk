@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 120" role="img" aria-labelledby="title">
+  <title id="title">KVADRA</title>
+  <rect width="560" height="120" fill="#fff"/>
+  <g fill="#111820">
+    <path d="M42 24h18v29l29-29h24L76 60l40 36H90L60 68v28H42z"/>
+    <path d="M124 24h21l24 51 24-51h21l-36 72h-19z"/>
+    <path d="M233 24h22l34 72h-21l-7-16h-36l-7 16h-20zm-1 40h22l-11-25z"/>
+    <path d="M302 24h33c27 0 43 14 43 36s-16 36-43 36h-33zm32 56c16 0 25-7 25-20s-9-20-25-20h-13v40z"/>
+    <path d="M394 24h39c21 0 34 10 34 27 0 11-6 19-16 24l20 21h-25l-16-18h-17v18h-19zm37 38c11 0 17-4 17-11s-6-11-17-11h-18v22z"/>
+    <path d="M496 24h22l34 72h-21l-7-16h-36l-7 16h-20zm-1 40h22l-11-25z"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 41.1">
+  <!-- Generator: Adobe Illustrator 29.5.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 137)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+
+      .st1 {
+        fill: #e40426;
+      }
+    </style>
+  </defs>
+  <rect class="st1" x="1.3" y="6.7" width="18.6" height="7.2" transform="translate(-4.2 10.5) rotate(-45)"/>
+  <polygon class="st0" points="22.7 19.1 17.6 14.1 4.5 27.1 4.5 27.2 4.5 27.2 16.3 39 21.4 33.9 14.6 27.2 22.7 19.1"/>
+  <polygon class="st0" points="43.5 8.9 43.5 12.6 36.9 12.6 36.9 15.3 41.7 15.3 41.7 19.1 36.9 19.1 36.9 24.7 32.8 24.7 32.8 12.9 32.8 8.9 43.5 8.9"/>
+  <path class="st0" d="M49.2,16.3h3.5v-3.6h-3.5v3.6ZM56.7,8.9v10.8h-2.2l2.8,5h-4.6l-2.4-4.7h-1.2v4.7h-4.1v-15.8h11.7Z"/>
+  <path class="st0" d="M63.1,20.7h3.6v-7.8h-3.6v7.8ZM70.8,24.7h-11.8v-15.8h11.8v15.8Z"/>
+  <polygon class="st0" points="81.5 18.2 81.5 8.9 85.6 8.9 85.6 24.7 81.5 24.7 77 15.4 77 24.7 72.9 24.7 72.9 12.9 72.9 8.9 77 8.9 81.5 18.2"/>
+  <polygon class="st0" points="98.5 8.9 98.5 12.9 94.7 12.9 94.7 24.7 90.6 24.7 90.6 12.9 86.8 12.9 86.8 8.9 98.5 8.9"/>
+</svg>

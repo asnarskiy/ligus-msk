@@ -1,0 +1,480 @@
+{
+  "note": "Логотипы из открытых материалов производителей и их технологических партнёров. Используются для обозначения брендов и производителей; не подтверждают партнёрство с Лигус. Геометрия знаков сохранена; адаптация встроенных SVG описана в соответствующей записи.",
+  "retrieved": "2026-10-23",
+  "brands": {
+    "Aquarius": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39181/",
+      "image": "https://astra.ru/upload/iblock/9d8/idm7hxgj4r5znf8z1xrlnnffqewx9jap/465736.jpg",
+      "owner": "Aquarius",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-192d78959b.jpg",
+      "sha256": "2aeaa2bf1b4f6c676fc8df44875ac826a58e8d5ce99c4414275c67661bc06c19"
+    },
+    "Гравитон": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/43941/",
+      "image": "https://astra.ru/upload/iblock/392/tbxecswrn35s6zsz8cy0y4muxk9d6o86/1163730.jpg",
+      "owner": "Гравитон",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-138e1d84f7.jpg",
+      "sha256": "7af7a9b8e44f3fd0d53588d503b66d8d1af78eaf9bfa8791236bf96c8b0cee8c"
+    },
+    "Rikor": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39156/",
+      "image": "https://astra.ru/upload/iblock/edb/d2dnq06377ig0ajpaxlhe32ic1ycis13/311888.jpg",
+      "owner": "РИКОР",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-95f3674f04.jpg",
+      "sha256": "83792c8ab2b422e02d817b95c464ccc6678bf66a4e7af82363839a2ddf3452ce"
+    },
+    "ICL": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/38074/",
+      "image": "https://astra.ru/upload/iblock/b5e/l0i88my0vu9q4co9zl6o5ry1c12t7g30/590779.jpg",
+      "owner": "ICL",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-bfe3a1cb39.jpg",
+      "sha256": "9b7bd37dc2038d2a251ffafc8fa877290a97512113d1a863b495396624eb8b6c"
+    },
+    "POSITRON": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39975/",
+      "image": "https://astra.ru/upload/iblock/68a/lhf2uc7t2noy60309hymqd75xz3crlps/778488.jpg",
+      "owner": "ЛНПО ПОЗИТРОН",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-eb2b95d7ff.jpg",
+      "sha256": "cfe80e2e4131629f48248b31fdcbe4352c61e5123ed7a8b2b4f4e7dcce40c6e4"
+    },
+    "Катюша": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/40402/",
+      "image": "https://astra.ru/upload/iblock/198/d7kv1nafth5167oyl38f0mf0tkqq8z0r/418321.jpg",
+      "owner": "Катюша Принт",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-da554ef1f5.jpg",
+      "sha256": "bb57481ad533b1842d2a017dc5529538697590140fc752c35ac836a1893214da"
+    },
+    "Kraftway": {
+      "page": "https://kraftway.ru/",
+      "image": "https://kraftway.ru/upload/CAllcorp3/224/yy4bq61tlb0f31pki12z2hjtk01r84wf.png",
+      "owner": "Kraftway",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-8f1b404404.png",
+      "sha256": "5bf927d48ada0af53a0c16385895777efd8ea375b86d40f65affd3acbca5015f"
+    },
+    "Элпи": {
+      "page": "https://elpitech.ru/",
+      "image": "https://elpitech.ru/upload/CPriority/11f/nu5t0cjlfmgkiyxc1vhk865hi3xjzkmk.png",
+      "owner": "Элпитех",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-850d72535e.png",
+      "sha256": "36a9067ffcca2b01c9f71beda8b960ca4940b320e02e3b50ec79291e5ae8cfee"
+    },
+    "Inferit": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39442/",
+      "image": "https://astra.ru/upload/iblock/c8c/alka681e8m1ouxshr1e576g2m19qcmrf/1034504.jpg",
+      "owner": "INFERIT",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-5ff14feb16.jpg",
+      "sha256": "630b2235b90543e061224608c8e68d01c70f246afa66c6d4f15d1a5a7de85706"
+    },
+    "F+": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39100/",
+      "image": "https://astra.ru/upload/iblock/1d5/c9i2155zm31wijus9dhp256jgksdypph/910400.jpg",
+      "owner": "Fplus",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-a9b830157d.jpg",
+      "sha256": "d16972d159a7d70bed0f264bc57667b7a20ff57eac9863818f799552f560a0d6"
+    },
+    "Бештау": {
+      "page": "https://beshtau.ru/",
+      "image": "https://beshtau.ru/wp-content/uploads/2025/06/logo.svg",
+      "owner": "Бештау",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-1fc4b928ec.svg",
+      "sha256": "43e9837eeaec2c0268d022cd5013b670a2dc05478ac7696df58f484390ea50ed"
+    },
+    "BITBLAZE": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39839/",
+      "image": "https://astra.ru/upload/iblock/10e/2o8ggziljohh7bm41zzzlqv948d2z82y/212281.jpg",
+      "owner": "BITBLAZE",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-a8b8e6be22.jpg",
+      "sha256": "a1a7e8f30eca7be431499e8aba123ffdda6a1dc63161ebc00ba1191f494d0d6a"
+    },
+    "RDW": {
+      "page": "https://rdwcomp.ru/",
+      "image": "https://rdwcomp.ru/assets/templates/img/rdw-logo.svg",
+      "owner": "RDW Computers",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-0d3089cbbb.svg",
+      "sha256": "2c8c3f8560ebcde17634bb5317eaa3a5c50a32118788face38067dc52c3211b8"
+    },
+    "AMUR": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/43339/",
+      "image": "https://astra.ru/upload/iblock/d43/5maiumpxqu6shxlowie9tketg6xvtery/998500.jpg",
+      "owner": "Амур Системс",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-cfa626be37.jpg",
+      "sha256": "4dbcdf1d12b068a6b27112ba0b511d15013a15825e98be02d5471841e08c72be"
+    },
+    "DEPO": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39066/",
+      "image": "https://astra.ru/upload/iblock/bcf/vhxq7jp63mjekmown32t0rxo1k54eu9w/a36d9f846a3ece9cb756942612dde669.jpg",
+      "owner": "DEPO Computers",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-be1b0bd397.jpg",
+      "sha256": "693bee7cb7acbb21bc7a11af07ab64d0e02119c35192594e6289b8e46e238a51"
+    },
+    "Лось": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39062/",
+      "image": "https://astra.ru/upload/iblock/a90/62xwr6b0riw46k333dy4jii0ov08vb25/134704.jpg",
+      "owner": "Дельта Компьютерc",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-19d56f4dab.jpg",
+      "sha256": "5b250ccb52f1ffd9939ddeb46c12a2aba932671c8adb7140d7e9f257c53519e3"
+    },
+    "REALINTECHPRO": {
+      "page": "https://intech-pro.ru/",
+      "image": "https://intech-pro.ru/images/logo.svg?v=2",
+      "owner": "ИНТЕХПРО",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-fbc62977e8.svg",
+      "sha256": "5dc0abb7a8fee229027981d13e4b29a8db94cda33d20b5f4734ec2be01030b22"
+    },
+    "Гигант": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/52575/",
+      "image": "https://astra.ru/upload/iblock/ded/ati1zaf49eq3p8um9voxep99fmvs34gx/1767769.jpg",
+      "owner": "ГИГАНТ комплексные системы",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-c1ac93bd1c.jpg",
+      "sha256": "f894d7a09ec5800149ea3a18409abea9c463adeeb9eeb402e521e38a004e6cc1"
+    },
+    "ARBYTE": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39495/",
+      "image": "https://astra.ru/upload/iblock/e3a/fjwgsgx4yikt171r4yxnv8zayn9mkygu/23568.jpg",
+      "owner": "ARBYTE",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-39ee9ce0f6.jpg",
+      "sha256": "6cf21c6ec9d82dc7a8388a5fd26bc0d2c5a3527243827a0bd682cfac38d540c0"
+    },
+    "UNIVERSAL": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39693/",
+      "image": "https://astra.ru/upload/iblock/2a4/wc3y72u1usps62fcgnyun92a0z9a3f64/174704.jpg",
+      "owner": "КМ Инженерные Системы",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-f55f00c6ed.jpg",
+      "sha256": "ff138293981cef0166b146f66fa0b5dcb9e64428d23c6648bb91d1597e639fc2"
+    },
+    "KCG": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/42886/",
+      "image": "https://astra.ru/upload/iblock/4ba/kdjjqxtulb1kvfb1n9vf2uu9n0xgm0tl/1043714.jpg",
+      "owner": "KCG",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-253c8cd5cc.jpg",
+      "sha256": "7fedb805182db35a4a13e69725b14af480b3245a7b15c954e8257663679abccb"
+    },
+    "Marina Richi": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/40122/",
+      "image": "https://astra.ru/upload/iblock/126/f7njlk0w13c28ssztzjs9q7oeb9dgziq/148553.jpg",
+      "owner": "Мегаполис-Телеком регион",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-639671cbf0.jpg",
+      "sha256": "8b29af8c736e2997476ffa00f8e58f5b3cdd4a18770b9e8fdd3e63fc3b27cd97"
+    },
+    "LightCom": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/41426/",
+      "image": "https://astra.ru/upload/iblock/754/6k9t1eu2exhgk2pz8e9puxzsg1d16xkd/1174773.jpg",
+      "owner": "ЛайтКом",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-c805174b54.jpg",
+      "sha256": "a832c07b637a88fc5fd42e206ec748185ebd3b2674ef75ecf9ccad28467a01b7"
+    },
+    "STOREX": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/50403/",
+      "image": "https://astra.ru/upload/iblock/d8f/oxbqsk32sy68attn0bolbfotu2t29wg7/1450786.jpg",
+      "owner": "БАЙТ",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-c402c2e74d.jpg",
+      "sha256": "01fdec6133414d12065cd9a9d9a6ed972bcffa2afee5f48d659d1bf3fd637afa"
+    },
+    "RAMEC": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39158/",
+      "image": "https://astra.ru/upload/iblock/e2e/n61apcut9zya4dcuujezwnpzw5nh4voo/63052.jpg",
+      "owner": "РАМЭК-ВС",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-0bd7ab1351.jpg",
+      "sha256": "00a032cc4df1fa0f1e181411877cbd85c5ae6c6a66508239b769fbddaffee5aa"
+    },
+    "Эльбрус": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39344/",
+      "image": "https://astra.ru/upload/iblock/b0d/gisjxyd47gasmpby7pfi0um3r3qnx2ld/218184.jpg",
+      "owner": "МЦСТ",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-b718f5e107.jpg",
+      "sha256": "380a8adfb8b26839ecd5e3f3398330c186cec7b30d60165cd4fdd1becb5fca04"
+    },
+    "Альви": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/50692/",
+      "image": "https://astra.ru/upload/iblock/039/stqr3qgae03qy9osnwwf6qi0x6zt03mq/1448731.jpg",
+      "owner": "ЮЛЭНД",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-9d8533a79d.jpg",
+      "sha256": "55c92eb17b420d463234643b2973d711385ef14c4546d8a9d71129681c36e1d6"
+    },
+    "VECOM": {
+      "page": "https://vecom.ru/",
+      "image": "https://vecom.ru/wp-content/uploads/2024/01/logotip.svg",
+      "owner": "VECOM",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-8668f032ab.svg",
+      "sha256": "2dace2b40d684ac178d3dffa8f3f719f1f188c7f257ba93d4fc9abb624ac7cd1"
+    },
+    "Сила": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39335/",
+      "image": "https://astra.ru/upload/iblock/2c2/ae2xz5gni46ktifk1zazles3rgad5ws3/421205.jpg",
+      "owner": "СИЛА",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-69c1590a47.jpg",
+      "sha256": "1cd20bd6e03c8779bdf1c44e103fd712731f53c15704934cc143469a9751d54e"
+    },
+    "ProInterTech": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39794/",
+      "image": "https://astra.ru/upload/iblock/37e/uiid8n5qcex7ha2gq478kf3z51kpb738/277948.jpg",
+      "owner": "ТСЦ ИнтерТех",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-a9a5247412.jpg",
+      "sha256": "5dca3dd5fd7b371480c689603a61c1f2073b365945e133370b4d0bc178103988"
+    },
+    "Арсенал+": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39847/",
+      "image": "https://astra.ru/upload/iblock/878/th34wgl3tpxne5r92g5vtt1a8ohh6ior/268987.jpg",
+      "owner": "ГК Арсенал+",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-ba6d76b085.jpg",
+      "sha256": "08101799f91336e7d3d469b9886090b9cd1a876d88a6967843f69c2f06e2a62d"
+    },
+    "Норси": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39034/",
+      "image": "https://astra.ru/upload/iblock/9e9/0a475t58m03pkd80bsw08onnxvq6fdss/21675.jpg",
+      "owner": "НОРСИ-ТРАНС",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-82057a41c2.jpg",
+      "sha256": "b0ff8dec1a97b352531143247277800a797fd6a608212bc3cf196423935838e6"
+    },
+    "Limark": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39568/",
+      "image": "https://astra.ru/upload/iblock/25b/iyfhgf8j97wi4yhjk07jjre7awklkfr4/211370.jpg",
+      "owner": "LIMARK",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-7aef330dda.jpg",
+      "sha256": "29f28bbf7d647f7d41775e21ee6233ec184b5a9a095c8e849bde592eb56d0eb7"
+    },
+    "Ancomp": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/41076/",
+      "image": "https://astra.ru/upload/iblock/ce5/o11nbyvcsiru41e2vjepumtx4e570gv0/765864.jpg",
+      "owner": "Анкомп",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-5965aac0d9.jpg",
+      "sha256": "06698bdb13a6276d4b36b568db7108c0d94b3d5c36ed165ab3b49a300ec335c0"
+    },
+    "Lumien / NexTouch": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39607/",
+      "image": "https://astra.ru/upload/iblock/1ae/2bn9hvb1rynuc911p6ctp4nwz9za34vc/61711.jpg",
+      "owner": "NexTouch",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-776a94a8f6.jpg",
+      "sha256": "e4fb91b03c8e9e5690a259f89313e0b15a9d56a4793dd2690bb5cc7baf1153ca"
+    },
+    "TeachTouch": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/41004/",
+      "image": "https://astra.ru/upload/iblock/632/i5ltbn8rb4dllevpcpfxo1e519vx3bou/83431.jpg",
+      "owner": "Полимедиа",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-0330afaf0e.jpg",
+      "sha256": "b06d4f9f64a7d83179945ffd753a4168ee14f4d5831a0f4c493abc9357bfb26a"
+    },
+    "Сова": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39064/",
+      "image": "https://astra.ru/upload/iblock/0df/t5ih04nefgk9vd2g011v387r765oceca/780596.jpg",
+      "owner": "Дельта Солюшнс",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-40d11f2511.jpg",
+      "sha256": "a4d08adc4a066784a978753076213874e0e4a4c9a1717062c999ccfa03eddd55"
+    },
+    "Элитборд": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/41000/",
+      "image": "https://astra.ru/upload/iblock/1c1/03aofg99k47r2ffu7ujrrtl33w1q01ow/205481.jpg",
+      "owner": "EliteBoard",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-bd9a983a62.jpg",
+      "sha256": "5534b455fbb732a2f51d08f441cf37d78887de28d2b8913567e0e529f4b619cc"
+    },
+    "IRBIS": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39669/",
+      "image": "https://astra.ru/upload/iblock/ccc/05skucfk0yv9uvvbetk1j3uylryno3yg/298730.jpg",
+      "owner": "Irbis",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-957c8e5348.jpg",
+      "sha256": "c2459d73a8b50d429022ee83462f402799bbaae374c1859d1e9b49c56246cadf"
+    },
+    "ЭЛАР Скамакс": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39008/",
+      "image": "https://astra.ru/upload/iblock/a73/hxu3sww1ab7caday7ika08smofcttpaf/639358.jpg",
+      "owner": "ЭЛАР",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-814f3edacf.jpg",
+      "sha256": "44a7955467870fd6770d2aa2b6e4a5afb5e0ae4a508b7a8e70e05f1199067136"
+    },
+    "OKO": {
+      "page": "https://astra.ru/ready-for-astra/companies-partners/39752/",
+      "image": "https://astra.ru/upload/iblock/9fa/f30ogxriifzacj30a9291hdm9nwco2m0/298696.jpg",
+      "owner": "БайтЭрг",
+      "sourceType": "technology-partner",
+      "path": "dist/assets/manufacturers/logos/brand-790af86100.jpg",
+      "sha256": "267784b1da139a52a3c19a7069faee0c4f77f8da848e4a973939bd024f2f731e"
+    },
+    "KVADRA": {
+      "page": "https://digital.moscow/partners/kvadra/",
+      "image": "https://digital.moscow/assets/brand/vendors/kvadra-logo-official.svg",
+      "owner": "KVADRA",
+      "sourceType": "partner",
+      "path": "dist/assets/manufacturers/logos/brand-ff28ec3a89.svg",
+      "sha256": "ebec4beab65fb856afaf1ceb11d075671321f991526570fcbacce6ba72a35652"
+    },
+    "AR Pro": {
+      "page": "https://appliedrobotics.ru/",
+      "image": "https://appliedrobotics.ru/wp-content/uploads/2016/10/logo6.png",
+      "owner": "Прикладная робототехника",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-1584176fc2.png",
+      "sha256": "f424fb2b687bffb24267e93393ef271b1d5d4e95c56edaeaaec6e0544b6c79b0"
+    },
+    "LigaSmart": {
+      "page": "https://liga-smart.ru/",
+      "image": "https://static.tildacdn.com/tild3231-6262-4637-b364-653235383033/LIGA_Smart__1.png",
+      "owner": "LigaSmart",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-6b83d13c8e.png",
+      "sha256": "f64f3541d55d7a30b310f7581fd95cb98d70594ebb115e07fb1015e4e6d9c4c7"
+    },
+    "СЭВТ": {
+      "page": "https://pr.savt.ru/",
+      "image": "https://pr.savt.ru/templates/mytemplate/img/frame-145321-1 1(1).svg",
+      "owner": "СЭВТ",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-6900311047.svg",
+      "sha256": "d9d5306ee05cb650011acdcdff2f59dcab220e8fca3fad9a77cd7131d1117a51"
+    },
+    "SberDevices": {
+      "page": "https://sberdevices.ru/about/",
+      "image": "https://sberdevices.ru/about/#header",
+      "owner": "SberDevices",
+      "sourceType": "manufacturer-inline-svg",
+      "path": "dist/assets/manufacturers/logos/sberdevices.svg",
+      "sha256": "86b06b5908e33ad57286600caf99a188839c4697b415ef59e46c2f41386c9535",
+      "adaptation": "Восстановлен fill=\"#000\" для path из CSS официальной страницы; геометрия сохранена."
+    },
+    "ZEON": {
+      "page": "https://zeongroup.ru/",
+      "image": "https://zeongroup.ru/img/logo.png",
+      "owner": "ZEON",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-b43719a4a8.png",
+      "sha256": "b05e6679bfd9f1daed66127573480ee4148eb8277ea24a60630599b26b7ed52d"
+    },
+    "UTS Smart": {
+      "page": "https://unitsys.ru/",
+      "image": "https://unitsys.ru/files/images/new/logo.svg",
+      "owner": "UTS",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-49fbd06a77.svg",
+      "sha256": "b7662a9fd0dad9dd0a4d10512f17ea79cff24caff98169bd0e56f479caaa0ee6"
+    },
+    "Интертач": {
+      "page": "https://touchtrade.ru/",
+      "image": "https://touchtrade.ru/wp-content/uploads/2021/06/intertouch_logo_2020.png",
+      "owner": "InterTouch",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-f7122d2426.png",
+      "sha256": "d73b6184477bff2813f6adb85be22bd99afd3d13e8301b9986b086ae3a172f7c"
+    },
+    "SMARTMATE": {
+      "page": "https://smart-mate.ru/",
+      "image": "https://smart-mate.ru/upload/CMax/91b/4l0c80bu7gne8gtoaaqg5gtf9sm21ab4.svg",
+      "owner": "SmartMate",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-b6d857e645.svg",
+      "sha256": "45f07cb615273ab86f858976972afdfe939f173631a156ae4c3c8e2aee3e8322"
+    },
+    "Билтех": {
+      "page": "https://bilteh.ru/",
+      "image": "https://bilteh.ru/images/logo-bilteh-without-text.svg",
+      "owner": "Билтех",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-e69bae35d6.svg",
+      "sha256": "567aec6f6919e31cc37b41525e470dced48143fc27a765b4af7b4c1f95cc0a63"
+    },
+    "МОНИТОРУС": {
+      "page": "https://monitoros.ru/",
+      "image": "https://monitoros.ru/wp-content/uploads/2024/01/kbuamcnob5523wdopah9i3p0y29twzfh.png",
+      "owner": "Мониторус",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-442195fd07.png",
+      "sha256": "271f3b73bdfdc7e6a8d5d68a3c660031ce01f188687d1f6c02d6f39a1166d0c6"
+    },
+    "ДИСОФТ": {
+      "page": "https://xn--d1aislgl.xn--p1ai/",
+      "image": "https://static.tildacdn.com/tild3266-3565-4435-a438-396466313234/disoft-logo.svg",
+      "owner": "Дисофт",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-4e48d15688.svg",
+      "sha256": "5df491d21b248cd9b957fb655a2d0b561e587186d8443687346abc3c91111ef0"
+    },
+    "Geckotouch": {
+      "page": "https://geckotouch.ru/",
+      "image": "https://geckotouch.ru/#icon-logo",
+      "owner": "Geckotouch",
+      "sourceType": "manufacturer-inline-svg",
+      "path": "dist/assets/manufacturers/logos/geckotouch.svg",
+      "sha256": "0a9a46af046af8c74051a213d825efbc8ca2a0241b2f5cf691e945fbb620ac02",
+      "adaptation": "Символ icon-logo вынесен в отдельный SVG без изменения геометрии."
+    },
+    "Орикс": {
+      "page": "https://oriks.net/contacts",
+      "image": "https://static.tildacdn.com/tild6465-6533-4430-b164-336337353135/LogoBlack_xs.png",
+      "owner": "Орикс",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-b2e0a8f247.png",
+      "sha256": "9891a5a30a0a507ea9b0ba7d21e34b6b7e26e3cacaba28174009560a9f803934"
+    },
+    "МИГ": {
+      "page": "https://migcomputers.ru/",
+      "image": "https://static.tildacdn.com/tild6535-6663-4333-b661-306238613534/logo_mig.png",
+      "owner": "МИГ",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-877718b7f5.png",
+      "sha256": "c6899c6d36dd468ebaa640bbfafb13a85f3cfadadebc7d6c70251355dd7c2668"
+    },
+    "FRONT": {
+      "page": "https://front-ipc.ru/",
+      "image": "https://front-ipc.ru/fm-logo-rw.svg",
+      "owner": "FRONT",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-a855f18ac5.svg",
+      "sha256": "ea20c6da2125ba56799a973677f67a59d3cdcdd35a81d33d08b74dae629f2137"
+    },
+    "NettleBox": {
+      "page": "https://nttl.ru/",
+      "image": "https://static.tildacdn.com/tild3763-3863-4335-b161-383665366231/NBLogo.svg",
+      "owner": "NettleBox",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-827400bdf9.svg",
+      "sha256": "44e834d78776dc1f5cecc3b2f9ea976a0d21c449dfd7da2bab0660cd8e7152c3"
+    },
+    "АБР": {
+      "page": "https://www.abrtechnology.ru/",
+      "image": "https://static.tildacdn.com/tild3937-3762-4162-b864-613739643732/logo.svg",
+      "owner": "АБР Технолоджи",
+      "sourceType": "manufacturer",
+      "path": "dist/assets/manufacturers/logos/brand-a81574b49b.svg",
+      "sha256": "6702eeeba9d6c77ac87f64c38338a55eb24cf4130951f310ecd7c483c05b83f1"
+    }
+  }
+}

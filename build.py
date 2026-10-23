@@ -219,11 +219,13 @@ def manufacturer_links():
         tags = ' '.join(category['id'] for category in matches)
         types = ' · '.join(category['shortLabel'] for category in matches)
         detail = f'<span class="manufacturer-detail">{html.escape(profile["detail"])}</span>' if profile.get('detail') else ''
-        if profile.get('image'):
-            visual = f'<img src="/assets/manufacturers/{profile["image"]}.webp" alt="{html.escape(name)}" width="1200" height="900" loading="lazy" decoding="async">'
+        if profile.get('logo'):
+            visual = f'<img class="manufacturer-logo" src="/assets/manufacturers/{profile["logo"]}" alt="{html.escape(profile.get("logoAlt", name))}" width="240" height="96" loading="lazy" decoding="async">'
         else:
             visual = f'<span class="manufacturer-name">{html.escape(name)}</span>'
-        content = f'<div class="manufacturer-visual">{visual}</div><div class="manufacturer-caption">{detail}<span class="manufacturer-types">{html.escape(types)}</span></div>'
+        brand = f'<span class="manufacturer-brand">{html.escape(name)}</span>' if profile.get('logo') else ''
+        logo_theme = ' manufacturer-visual-dark' if profile.get('logoTheme') == 'dark' else ''
+        content = f'<div class="manufacturer-visual{logo_theme}">{visual}</div><div class="manufacturer-caption">{brand}{detail}<span class="manufacturer-types">{html.escape(types)}</span></div>'
         if profile.get('url'):
             card = f'<a class="manufacturer-card" href="{html.escape(profile["url"])}" target="_blank" rel="noopener noreferrer" aria-label="{html.escape(name)} — сайт производителя (откроется в новой вкладке)">{content}<span class="manufacturer-arrow" aria-hidden="true">{icon("up",16)}</span></a>'
         else:
