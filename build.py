@@ -20,7 +20,7 @@ if FORM_PROVIDER == 'smtp' and (BASE_PATH or SITE_URL != SITE['domain'].rstrip('
 SEARCH = SearchConfig(SITE, SITE_URL)
 LEGAL = consent_document(SITE)
 FORM_ENABLED = os.environ.get('CONTACT_FORM_ENABLED', '1' if SITE.get('contactFormEnabled') else '0') == '1'
-if SITE.get('contactFormEnabled') and not SITE.get('legalDetailsConfirmed'):
+if FORM_ENABLED and not SITE.get('legalDetailsConfirmed'):
     raise ValueError('Confirm company details and operational data handling before enabling the form')
 OG_IMAGE = (OUT / 'og.png').read_bytes()
 if OG_IMAGE[:8] != b'\x89PNG\r\n\x1a\n':
@@ -89,6 +89,8 @@ def header(active=''):
     return f'''<a class="skip" href="#main">Перейти к содержанию</a><header class="site-header"><div class="nav-shell"><div class="wrap nav-frame"><a class="nav-mark" href="/" aria-label="Лигус — главная"><img src="/favicon.svg" width="28" height="28" alt=""></a><div class="nav-brand">{brand()}</div><nav class="nav" aria-label="Основная навигация">{links}</nav>{toggle('nav-menu-toggle')}</div></div><div class="header-main-shell"><div class="header-main wrap">{brand()}<div class="header-contact">{phone_link()}{email_link()}</div><a class="header-cta" href="/request/">Обсудить задачу {icon('up',18)}</a>{toggle('main-menu-toggle')}</div></div></header><dialog class="mobile-menu" id="mobile-menu" aria-label="Меню сайта"><div class="mobile-menu-inner wrap"><div class="mobile-menu-top">{brand()}<button class="menu-close" type="button" aria-label="Закрыть меню" autofocus><span></span><span></span></button></div><nav class="mobile-menu-nav" aria-label="Мобильная навигация">{links}</nav><div class="mobile-menu-bottom"><div class="mobile-menu-contact">{phone_link()}{email_link()}</div><p>{SITE['geography']}</p><a class="button" href="/request/">Обсудить задачу {icon('up',20)}</a></div></div></dialog>'''
 
 def form_cookie_note():
+    if not FORM_ENABLED:
+        return 'Онлайн-форма отключена и не принимает данные или вложения. Контакты компании доступны в разделе «Контакты».'
     if FORM_PROVIDER == 'smtp':
         return 'Обработчик формы работает на сервере сайта. Для отправки используется временный защитный токен; cookie обработчик не устанавливает.'
     return 'На этой копии сайта нет формы сбора данных. Для обращения перейдите на основной сайт ligus-msk.ru.'
@@ -172,10 +174,10 @@ def steps():
     return '<div class="steps">'+''.join(f'<div><div class="step-top"><span>0{i+1}</span>{icon(step_icons[i],44)}</div><h3>{h}</h3><p>{p}</p></div>' for i,(h,p) in enumerate(data))+'</div>'
 
 def request_form(compact=False):
+    if not FORM_ENABLED:
+        return f'''<div class="request-transfer"><span class="eyebrow">ОБРАТИТЬСЯ В ЛИГУС</span><h2>Онлайн-форма временно недоступна</h2><p>Контакты компании и информация для покупателей доступны на сайте.</p><a class="button" href="/contacts/">Контакты компании {icon('up',21)}</a><p><a href="/privacy/">Как обрабатываются обращения</a> · <a href="/buyers/">Условия покупки, доставки и возврата</a></p></div>'''
     if FORM_PROVIDER == 'redirect':
         return f'''<div class="request-transfer"><span class="eyebrow">ОБРАТИТЬСЯ В ЛИГУС</span><h2>Расскажите о вашей задаче</h2><p>Форма обращения находится на основном сайте. На этой странице контактные данные и файлы не собираются.</p><a class="button" href="{SITE['domain']}/request/">Перейти к заявке {icon('up',21)}</a><p>Условия обработки данных доступны перед отправкой формы.</p></div>'''
-    if not FORM_ENABLED:
-        return f'''<div class="request-transfer"><span class="eyebrow">ОБРАТИТЬСЯ В ЛИГУС</span><h2>Онлайн-форма временно недоступна</h2><p>Контакты компании и информация для покупателей доступны на сайте.</p><a class="button" href="/contacts/">Контакты компании {icon('up',21)}</a><p><a href="/buyers/">Условия покупки, доставки и возврата</a></p></div>'''
     endpoint = '/api/contact.php'
     hidden = f'<input type="hidden" name="consent_version" value="{LEGAL["version"]}">'
     return f'''<form class="request-form" data-provider="{FORM_PROVIDER}" action="{html.escape(endpoint, quote=True)}" method="POST" enctype="multipart/form-data">{hidden}<input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="form-grid"><label>Ваше имя <span>*</span><input name="name" autocomplete="name" placeholder="Как к вам обращаться" required maxlength="100"></label><label>Телефон <span>*</span><input name="phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required maxlength="30"></label><label>Организация<input name="organization" autocomplete="organization" placeholder="Название вашей организации" maxlength="200"></label><label>Электронная почта<input name="email" type="email" autocomplete="email" placeholder="name@company.ru" maxlength="200"></label><label class="full">Ваша задача<textarea name="comment" placeholder="Для каких задач нужна техника? Что нужно оснастить? Укажите бюджет и сроки" rows="4" maxlength="5000"></textarea></label><div class="full"><label class="file-zone" for="spec-file{'-home' if compact else ''}">{icon('doc',23)}<span><strong>Прикрепить файл — если есть</strong><small>PDF, DOC, DOCX, XLS, XLSX, CSV, TXT · один файл до 10 МБ</small></span></label><input class="file-input" id="spec-file{'-home' if compact else ''}" type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt"><div class="file-info" aria-live="polite"></div></div></div><label class="consent"><input type="checkbox" name="consent" required><span>Даю <a href="/consent/" target="_blank" rel="noopener">согласие на обработку моих персональных данных</a> для ответа на обращение.</span></label><p class="form-note">Оператор — {html.escape(SITE["legalName"])}. <a href="/privacy/" target="_blank" rel="noopener">Политика обработки данных</a>. Заявка не подписывает на рекламу. Не прикладывайте паспортные данные и лишние сведения о других людях.</p><noscript><p>Для отправки формы включите JavaScript. Контакты компании доступны в разделе «Контакты».</p></noscript><div class="form-error" role="alert"></div><button class="button" type="submit">Отправить заявку {icon('up',21)}</button></form>'''
@@ -315,11 +317,14 @@ thanks=f'<section class="wrap thankyou"><span class="success-icon">{icon("check"
 write_page('thanks','Спасибо за обращение | Лигус','Спасибо за обращение в Лигус. Уточним задачу и подготовим предложение по оборудованию.',thanks)
 
 privacy=page_intro('Персональные данные','Политика обработки<br>персональных данных','Как мы обрабатываем обращения и защищаем ваши данные.')
-privacy+='<section class="wrap prose section-compact">'+privacy_content(SITE, FORM_PROVIDER, SEARCH.counter)+'</section>'
+privacy+='<section class="wrap prose section-compact">'+privacy_content(SITE, FORM_PROVIDER, SEARCH.counter, FORM_ENABLED)+'</section>'
 write_page('privacy','Политика обработки персональных данных | Лигус','Оператор, цели, основания и сроки обработки персональных данных. Права заявителей, отзыв согласия и способы обращения.',privacy)
 
 consent=page_intro('Согласие','Согласие на обработку<br>персональных данных','Отдельное согласие для обращения за подбором оборудования.')
-consent+='<section class="wrap prose section-compact">'+''.join('<p>'+html.escape(paragraph).replace('\n','<br>')+'</p>' for paragraph in LEGAL['text'].strip().split('\n\n'))
+consent+='<section class="wrap prose section-compact">'
+if not FORM_ENABLED:
+    consent+='<p>Онлайн-форма временно недоступна. Просмотр или скачивание этого документа не означает предоставления согласия.</p>'
+consent+=''.join('<p>'+html.escape(paragraph).replace('\n','<br>')+'</p>' for paragraph in LEGAL['text'].strip().split('\n\n'))
 consent+=f'<p class="legal-revision">Версия: {LEGAL["version"]}</p><p><a href="/consent/{LEGAL["version"]}.txt" download>Скачать текст согласия</a></p></section>'
 write_page('consent','Согласие на обработку данных обращения | Лигус','Текст отдельного согласия на обработку персональных данных для ответа на обращение, его срок действия и порядок отзыва.',consent)
 (OUT/'consent'/f'{LEGAL["version"]}.txt').write_text(LEGAL['text'],encoding='utf-8',newline='\n')

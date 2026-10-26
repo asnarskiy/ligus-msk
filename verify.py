@@ -20,12 +20,13 @@ FORM_ENABLED = os.environ.get('CONTACT_FORM_ENABLED', '1' if SITE.get('contactFo
 class Page(HTMLParser):
     def __init__(self, path):
         super().__init__()
-        self.links=[]; self.ids=set(); self.h1=0; self.title=''; self.in_title=False
+        self.links=[]; self.anchors=[]; self.ids=set(); self.h1=0; self.title=''; self.in_title=False
         self.meta={}; self.canonical=''; self.in_json=False; self.json_text=''; self.schemas=[]
         self.forms=[]; self.active_form=None
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if tag=='a' and a.get('href'):self.anchors.append(a['href'])
         if tag=='form':
             self.active_form={'attrs':a,'inputs':[],'links':[]}; self.forms.append(self.active_form)
         if self.active_form is not None:
@@ -61,6 +62,10 @@ for path,page in pages.items():
     if page.meta.get('robots','').startswith('index,'):indexed.append(page.canonical)
     expects_form = FORM_PROVIDER == 'smtp' and FORM_ENABLED and slug in ('', 'request')
     if len(page.forms) != int(expects_form):errors.append(f'Unexpected form availability: {slug}')
+    if not FORM_ENABLED and SITE['domain'].rstrip('/')+'/request/' in page.anchors:
+        errors.append(f'Disabled forms must not redirect to a primary form: {slug}')
+    if BASE_PATH+'/privacy/' not in page.anchors:
+        errors.append(f'Missing accessible privacy policy link: {slug}')
     for form in page.forms:
         attrs, inputs = form['attrs'], form['inputs']
         if attrs.get('action') != '/api/contact.php' or attrs.get('data-provider') != 'smtp':errors.append(f'Unsafe form destination: {slug}')

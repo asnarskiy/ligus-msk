@@ -12,7 +12,7 @@ const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const root=resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const qa=resolve(root,'release/marketing-qa');
 await mkdir(qa,{recursive:true});
-const modes={preview:{},enabled:{INDEXING_ENABLED:'1',METRICA_ID:'123456'},disabled:{CONTACT_FORM_ENABLED:'0'},static:{FORM_PROVIDER:'redirect'}};
+const modes={preview:{},enabled:{INDEXING_ENABLED:'1',METRICA_ID:'123456'},disabled:{CONTACT_FORM_ENABLED:'0'},static:{FORM_PROVIDER:'redirect',CONTACT_FORM_ENABLED:'0'},staticReady:{FORM_PROVIDER:'redirect',CONTACT_FORM_ENABLED:'1'}};
 const servers=[];
 for (const [mode, flags] of Object.entries(modes)) {
  const env={...process.env,INDEXING_ENABLED:'0',METRICA_ID:'',SITE_URL:'https://ligus-msk.ru',BASE_PATH:'',FORM_PROVIDER:'smtp',CONTACT_FORM_ENABLED:'1',OUTPUT_DIR:resolve(qa,mode),...flags};
@@ -46,14 +46,16 @@ async function context(mode, viewport={width:390,height:844}, slow=false){
 }
 try{
  // Published disabled forms and static mirrors must not accept contact details.
- for(const mode of ['disabled','static']){
+ for(const mode of ['disabled','static','staticReady']){
   const t=await context(mode);
   for(const path of ['/','/request/']){
    await t.page.goto(t.url+path);await t.page.waitForLoadState('networkidle');
    assert.equal(await t.page.locator('form,input,textarea').count(),0);
    assert.equal(await t.page.locator('.request-transfer').count(),1);
    assert.equal(t.hits.length,0);
-   if(mode==='static')assert.equal(await t.page.locator('.request-transfer .button').getAttribute('href'),'https://ligus-msk.ru/request/');
+   assert.equal(await t.page.locator('.request-transfer .button').getAttribute('href'),mode==='staticReady'?'https://ligus-msk.ru/request/':'/contacts/');
+   assert.equal(await t.page.evaluate(()=>document.cookie),'');
+   assert.equal(await t.page.evaluate(()=>localStorage.length),0);
    if(path==='/request/')await t.page.screenshot({path:resolve(qa,`request-${mode}-390.png`),fullPage:true});
    checks++;
   }
@@ -95,7 +97,7 @@ try{
  await t.page.locator('.request-form button[type=submit]').click();
  assert.equal(submissions,0);
  assert.equal(await t.page.locator('.consent a').getAttribute('href'),'/consent/');
- assert.match(await t.page.locator('[name=consent_version]').inputValue(),/^request-2026-10-22-[a-f0-9]{12}$/);
+ assert.match(await t.page.locator('[name=consent_version]').inputValue(),/^request-\d{4}-\d{2}-\d{2}-[a-f0-9]{12}$/);
  checks++;
  await t.page.locator('[name=consent]').check();
  await t.page.locator('.request-form button[type=submit]').click();
