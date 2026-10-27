@@ -1,8 +1,6 @@
 name: Publish website
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,6 +14,8 @@ concurrency:
 
 jobs:
   publish:
+    # Public Pages hosting is disabled by the owner. Re-enabling needs a separate decision.
+    if: vars.ENABLE_GITHUB_PAGES == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

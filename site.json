@@ -15,7 +15,7 @@
   "phone": "+7 977 977 22 31",
   "phoneHref": "+79779772231",
   "formProvider": "redirect",
-  "contactFormEnabled": false,
+  "contactFormEnabled": true,
   "maxFileMb": 10,
   "geography": "Вся Россия и страны СНГ",
   "areaServed": [
